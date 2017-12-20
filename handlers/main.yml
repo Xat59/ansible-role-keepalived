@@ -1,0 +1,6 @@
+---
+# handlers file for ansible-role-keepalived
+- name: restart keepalived
+  systemd:
+    name: keepalived
+    state: restarted

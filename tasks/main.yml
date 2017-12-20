@@ -1,0 +1,28 @@
+- name: install keepalived
+  yum:
+    name: "{{ item }}"
+    state: installed
+    update_cache: yes
+  with_items:
+    - keepalived
+
+- name: keepalived configuration
+  template:
+    src: templates/keepalived.conf.j2
+    dest: /etc/keepalived/keepalived.conf
+    backup: yes
+  notify:
+    - restart keepalived
+
+- name: keepalived service
+  systemd:
+    name: keepalived
+    enabled: yes
+
+#- name: mount NFS
+#  mount:
+#    name: /mnt
+#    src: 172.17.35.1:/MOB_IO
+#    fstype: nfs
+#    opts: defaults,vers=3
+#    state: mounted
