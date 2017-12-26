@@ -18,11 +18,3 @@
   systemd:
     name: keepalived
     enabled: yes
-
-#- name: mount NFS
-#  mount:
-#    name: /mnt
-#    src: 172.17.35.1:/MOB_IO
-#    fstype: nfs
-#    opts: defaults,vers=3
-#    state: mounted
